@@ -8,8 +8,8 @@ namespace Gyak6.Entities
 {
     class RateData
     {
-        DateTime Date { get; set; }
-        String Currency { get; set; }
-        Decimal Value { get; set; }
+        public DateTime Date { get; set; }
+        public String Currency { get; set; }
+        public Decimal Value { get; set; }
     }
 }

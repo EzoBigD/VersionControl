@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gyak6.Entities;
+using System.Xml;
 
 namespace Gyak6
 {
@@ -32,6 +33,26 @@ namespace Gyak6
             var result = response.GetExchangeRatesResult;
 
             bindingSource1.DataSource = Rates;
+
+            var xml = new XmlDocument();
+            xml.LoadXml(result);
+
+
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                var rate = new RateData();
+                Rates.Add(rate);
+
+                rate.Date = DateTime.Parse(element.GetAttribute("date"));
+
+                var childElement = (XmlElement)element.ChildNodes[0];
+                rate.Currency = childElement.GetAttribute("curr");
+
+                var unit = decimal.Parse(childElement.GetAttribute("unit"));
+                var value = decimal.Parse(childElement.InnerText);
+                if (unit != 0)
+                    rate.Value = value / unit;
+            }
         }
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
