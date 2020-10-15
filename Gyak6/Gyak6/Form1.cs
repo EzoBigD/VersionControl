@@ -30,6 +30,13 @@ namespace Gyak6
             var response = mnbService.GetExchangeRates(request);
 
             var result = response.GetExchangeRatesResult;
+
+            bindingSource1.DataSource = Rates;
+        }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
