@@ -18,11 +18,12 @@ namespace Gyak6
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
 
-       
+        BindingList<string> Currencies = new BindingList<string>();
+
+
         public Form1()
         {
-            InitializeComponent();
-            
+            InitializeComponent();          
         }
 
         private void RefreshData()
@@ -42,6 +43,7 @@ namespace Gyak6
             var result = response.GetExchangeRatesResult;
 
             bindingSource1.DataSource = Rates;
+            bindingSource2.DataSource = Currencies;
 
             var xml = new XmlDocument();
             xml.LoadXml(result);
