@@ -67,7 +67,10 @@ namespace Gyak8
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory();
+            Factory = new BallFactory()
+            {
+                BallColor = button2.BackColor
+            };
         }
 
         private void DisplayNext()
