@@ -1,18 +1,17 @@
-﻿using System;
+﻿using Gyak8.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using Gyak8.Abstractions;
 
-namespace Gyak8.Entities
+namespace Gyak8.Abstractions
 {
-    public class BallFactory : IToyFactory
+    public class CarFactory : IToyFactory
     {
         public Toy CreateNew()
         {
-            return new Ball();
+            return new Car();
         }
     }
 }
